@@ -10,7 +10,7 @@ const port          = config['port-no'];
 const app           = express();
 
 // routes here 
-const routes = require('./routes');
+const {routes} = require('./routes');
 app.use('/', routes);
 
 

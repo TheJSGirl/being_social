@@ -15,9 +15,30 @@ userRoutes.route('/')
     });
 
 userRoutes.route('/:id')
-    .get()
-    .patch()
-    .delete();
+    .get((req, res) => {
+        res.status(200).json({
+            message:'user get rout'
+        });
+    })
+    .patch((req, res) => {
+        res.status(200).json({
+            message: 'user patch'
+        });
+    })
+    .delete((req, res) => {
+        res.status(200).json({
+            message: 'delete route'
+        })
+    });
+
+userRoutes.route('/login')
+    .post((req, res) => {
+        res.status(200).json({
+            message: 'login route'
+        });
+    });
+
+
 
 module.exports = {
     userRoutes
