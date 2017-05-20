@@ -1,4 +1,9 @@
 {
     "port-no" : 7070,
-    "db-pass" : "pinku"
+    "db-details" : {
+        "db-pass" : "pinku",
+        "db-host" : "localhost",
+        "db-user" : "root",
+        "db-name" : "Social_Post"
+    }
 }

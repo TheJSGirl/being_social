@@ -2,6 +2,7 @@ const express       = require ('express');
 const bodyParser    = require('body-parser');
 const mysql         = require('promise-mysql');
 
+
 // loading configurations
 const config        = require('./config/config');
 const port          = config['port-no'];

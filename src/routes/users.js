@@ -1,11 +1,21 @@
 const userRoutes = require('express').Router();
+const db         = require('../db');
 
 // defining all the routes 
 
 userRoutes.route('/')
     .get((req, res) => {
-        res.status(200).json({
-            message : 'GET /users route is running'
+        db.pool.query('SELECT * FROM USERS').then((result) => {
+            return res.status(200).json({
+                status : 'success',
+                data : result
+            });
+        }).catch((err) => {
+            console.log(err);
+            return res.status(503).json({
+                status : 'failed',
+                message : 'Service not available'
+            });
         });
     })
     .post((req, res) => {
