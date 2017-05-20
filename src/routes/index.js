@@ -1,14 +1,14 @@
 // getting the express Router
-const routes    = require('express').Router;
+const routes    = require('express').Router();
 
 // importing routes
-const postRoutes    = require('./posts');
-const userRoutes    = require('./users');
+const {postRoutes}    = require('./posts');
+const {userRoutes}    = require('./users');
 const commentRoutes = require('./comments');
 
 routes.use('/users', usersRoute);
-routes.use('/posts', posts);
-routes.use('/comments', comments);
+routes.use('/posts', postRoutes);
+routes.use('/comments', commentRoutes.commentRoutes);
 
 
 module.exports = {

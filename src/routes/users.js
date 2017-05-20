@@ -1,4 +1,4 @@
-const userRoutes = require('express').Router;
+const userRoutes = require('express').Router();
 
 // defining all the routes 
 
