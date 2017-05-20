@@ -1,4 +1,4 @@
-const commentRoutes = express.Router;
+const commentRoutes = require('express').Router;
 
 //defining all routes
 

@@ -1,4 +1,5 @@
-const postRoutes = express.Router();
+
+const postRoutes = require('express').Router;
 
 
 postRoutes.route('/')

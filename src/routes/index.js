@@ -2,9 +2,9 @@
 const routes    = require('express').Router;
 
 // importing routes
-const postRoutes    = require('./routes/posts');
-const userRoutes    = require('./routes/users');
-const commentRoutes = require('./routes/comments');
+const postRoutes    = require('./posts');
+const userRoutes    = require('./users');
+const commentRoutes = require('./comments');
 
 routes.use('/users', usersRoute);
 routes.use('/posts', posts);
