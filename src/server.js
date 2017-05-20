@@ -1,12 +1,18 @@
-const express = require ('express');
-const bodyParser = require('body-parser');
-const mysql = require('promise-mysql');
+const express       = require ('express');
+const bodyParser    = require('body-parser');
+const mysql         = require('promise-mysql');
 
+// loading configurations
+const config        = require('./config/config');
+const port          = config['port-no'];
 
 //app init
-const app = express();
+const app           = express();
 
-//routes
-const posts = require('./routes/posts');
-const users = require('./routes/users');
-const comments = require('./routes/comments');
+// routes here 
+const routes = require('./routes');
+app.use('/', routes);
+
+app.listen(port, ()=>{
+    console.log('listening at port no :', port);
+});
