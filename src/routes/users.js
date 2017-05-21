@@ -20,8 +20,23 @@ userRoutes.route('/')
             });
     })
     .post((req, res) => {
-        res.status(200).json({
-            message : 'POST /users route is running'
+        const user_data = {
+            user_name : req.body.user_name,
+            user_email : req.body.user_email,
+            user_pass : req.body.user_pass
+        };
+        db.pool.query('INSERT INTO USERS SET ?', user_data)
+        .then((result) => {
+            res.status(200).json({
+                status: 'success',
+                message : `{user_data}saved successfully`
+            });
+        })
+        .catch((err) => {
+            res.status(503).json({
+                status : 'failed',
+                message : 'something went wrong'
+            });
         });
     });
 
@@ -46,9 +61,20 @@ userRoutes.route('/:id')
         });
     })
     .delete((req, res) => {
-        res.status(200).json({
-            message: 'delete route'
+        let id = req.params.id;
+        db.pool.query('DELETE FROM USERS WHERE ID = ?', [id])
+        .then((result) => {
+            return res.status(200).json({
+                status : 'success',
+                message : 'deleted successfully'
+            });
         })
+        .catch((err) => {
+            return res.status(404).json({
+                status : 'failed',
+                message : 'not found'
+            });
+        });
     });
 
 userRoutes.route('/login')
