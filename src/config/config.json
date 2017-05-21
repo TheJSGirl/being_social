@@ -1,5 +1,5 @@
 {
-    "port-no" : 7070,
+    "port-no" : 2020,
     "db-details" : {
         "db-pass" : "pinku",
         "db-host" : "localhost",

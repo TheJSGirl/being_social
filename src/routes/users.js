@@ -5,18 +5,19 @@ const db         = require('../db');
 
 userRoutes.route('/')
     .get((req, res) => {
-        db.pool.query('SELECT * FROM USERS').then((result) => {
-            return res.status(200).json({
-                status : 'success',
-                data : result
+        db.pool.query('SELECT * FROM USERS')
+            .then((result) => {
+                return res.status(200).json({
+                    status : 'success',
+                    data : result
+                });
+            }).catch((err) => {
+                console.log(err);
+                return res.status(503).json({
+                    status : 'failed',
+                    message : 'Service not available'
+                });
             });
-        }).catch((err) => {
-            console.log(err);
-            return res.status(503).json({
-                status : 'failed',
-                message : 'Service not available'
-            });
-        });
     })
     .post((req, res) => {
         res.status(200).json({
@@ -26,9 +27,18 @@ userRoutes.route('/')
 
 userRoutes.route('/:id')
     .get((req, res) => {
-        res.status(200).json({
-            message:'user get rout'
-        });
+        let id = req.params.id;
+        db.pool.query('SELECT * FROM USERS WHERE USER_ID = ?', [id])
+            .then((row) => {
+                console.log(row[0].USER_NAME);
+                return res.status(200).json(row);
+            }).catch((err) => {
+                console.log(err);
+                return res.status(503).json({
+                    status : 'failed',
+                    message : 'Service not available'
+                });
+            });
     })
     .patch((req, res) => {
         res.status(200).json({
