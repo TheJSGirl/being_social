@@ -10,6 +10,13 @@ const port          = config['port-no'];
 //app init
 const app           = express();
 
+// parse application/x-www-form-urlencoded 
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json 
+app.use(bodyParser.json())
+ 
+
 // routes here 
 const {routes} = require('./routes');
 app.use('/', routes);

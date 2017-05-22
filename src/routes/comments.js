@@ -1,5 +1,5 @@
 const commentRoutes = require('express').Router();
-const db         = require('../db');
+const db            = require('../db');
 //defining all routes
 
 commentRoutes.route('/')
@@ -26,7 +26,7 @@ commentRoutes.route('/')
                 .then((result) => {
                     return res.status(200).json({
                         status : 'success',
-                        data : `{result} saved successfully`
+                        data : result
                     });
                 })
                 .catch((err) => {
